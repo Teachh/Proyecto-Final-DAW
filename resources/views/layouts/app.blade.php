@@ -47,7 +47,7 @@
                     <a href="{{ url('/login') }}" class="login">Login</a>
                     <a href="{{ url('/register') }}" class="register">Regístrate</a>
                     @else
-                    <!-- ESTO FALTA CAMBIAR -->
+                    <!-- ESTO FALTA CAMBIAR
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -64,7 +64,15 @@
                             </form>
                         </div>
                     </li>
+                     -->
                     <!-- ESTO FALTA CAMBIAR -->
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                     @endguest
                 </div>
             </div>
@@ -96,11 +104,13 @@
         <!-- Footer section end -->
     </div>
     <!--====== Javascripts & Jquery ======-->
+    
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.slicknav.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/mixitup.min.js"></script>
     <script src="js/main.js"></script>
+  
 </body>
 </html>
