@@ -13,7 +13,7 @@ class Draw extends Model
         return $this->hasMany('App\Favorite');
     }
     public function votes() {
-        return $this->belongsToMany('App\Vote');
+        return $this->hasMany('App\Vote');
     }
     public function user() {
         return $this->belongsTo('App\User');

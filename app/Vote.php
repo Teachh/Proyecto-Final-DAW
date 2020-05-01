@@ -9,7 +9,7 @@ class Vote extends Model
     public function user() {
         return $this->belongsTo('App\User');
     }
-    public function draws() {
-        return $this->belongsToMany('App\Draw');
+    public function draw() {
+        return $this->belongsTo('App\Draw');
     }
 }

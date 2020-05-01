@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Draw;
+use App\User;
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $draws = Draw::all();
+        // Personas con mas seguidores
+        $popularUsers = User::all();
+        $popularUsersOrd = [];
+        foreach ($popularUsers as $p) {
+            $popularUsersOrd[$p->id] = count($p->follows);
+        }
+        arsort($popularUsersOrd);
+
+        return view('home', compact('draws', 'popularUsersOrd'));
     }
 }

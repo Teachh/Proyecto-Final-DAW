@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('rol')->nullable();
-            $table->string('profie_picture')->nullable()->default('profileImages/default.png');
+            $table->string('profile_picture')->nullable()->default('profileImages/default.png');
             $table->string('background')->nullable()->default('https://www.xtrafondos.com/wallpapers/espacio-con-estrellas-2899.jpg');
             $table->rememberToken();
             $table->timestamps();

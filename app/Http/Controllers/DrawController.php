@@ -44,9 +44,9 @@ class DrawController extends Controller
      * @param  \App\Draw  $draw
      * @return \Illuminate\Http\Response
      */
-    public function show(Draw $draw)
+    public function show($id)
     {
-        //
+        return "Bienbenido al dibujo ". $id;
     }
 
     /**
