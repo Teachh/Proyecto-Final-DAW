@@ -22,9 +22,13 @@ class FollowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $f = new Follow();
+        $f->user_id = $id;
+        $f->user_id_request = auth()->user()->id;
+        $f->save();
+        return redirect('perfil/'.$id);
     }
 
     /**
@@ -78,8 +82,11 @@ class FollowController extends Controller
      * @param  \App\Follow  $follow
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Follow $follow)
+    public function destroy($id)
     {
-        //
+        $f = Follow::where('user_id',$id)->where('user_id_request',auth()->user()->id);
+        $f->delete();
+        return redirect('perfil/'.$id);
+
     }
 }

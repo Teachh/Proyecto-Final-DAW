@@ -15,8 +15,8 @@ class CreateFollowsTable extends Migration
     {
         Schema::create('follows', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id_logged')->unsigned()->default('1');
-            $table->foreign('user_id_logged')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned()->default('1');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->bigInteger('user_id_request')->unsigned()->default('1');
             $table->foreign('user_id_request')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

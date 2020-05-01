@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="css/registerlogin.css" />
 @endsection
 @section('content')
-<!-- DE MOMENTO COMENTADO
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -77,7 +76,6 @@
         </div>
     </div>
 </div>
--->
 
 <div class="container h-100 mt-5 mb-5">
     <div class="d-flex justify-content-center h-100">
@@ -90,8 +88,6 @@
             <div class="d-flex justify-content-center form_container">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-
-
                     <div class="input-group mb-2">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>

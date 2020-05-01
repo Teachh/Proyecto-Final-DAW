@@ -24,6 +24,7 @@ return array(
     'App\\Http\\Controllers\\FavoriteController' => $baseDir . '/app/Http/Controllers/FavoriteController.php',
     'App\\Http\\Controllers\\FollowController' => $baseDir . '/app/Http/Controllers/FollowController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\VoteController' => $baseDir . '/app/Http/Controllers/VoteController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

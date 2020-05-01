@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="shortcut icon" />
+    <link href="{{ asset('img/favicon.ico')}}" rel="shortcut icon" />
 
     <!-- Iconos -->
     <script src="https://kit.fontawesome.com/0c0a76602a.js" crossorigin="anonymous"></script>
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/slicknav.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('css/slicknav.min.css')}}" />
 
     <!-- Main Stylesheets -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}" />
     @yield('css')
 
     <!--[if lt IE 9]>
@@ -36,12 +36,21 @@
     <div id="app">
         <!-- Header section -->
         <header class="header-section clearfix">
+            @if(auth())
+            <a href="{{ url('/home') }}" class="site-logo">
+            @else
             <a href="{{ url('/') }}" class="site-logo">
-                <img src="img/logo.png" id="logomain" alt="">
+            @endif
+                <img src="{{asset('img/logo.png')}}" id="logomain" alt="">
             </a>
             <div class="header-right">
+                @if(auth()->user())
+                <a href="{{action('UserController@index')}}" class="hr-btn">{{auth()->user()->name}}</a>
+                <span>|</span>
+                @else
                 <a href="#footer" class="hr-btn">Ayuda</a>
                 <span>|</span>
+                @endif
                 <div class="user-panel">
                     @guest
                     <a href="{{ url('/login') }}" class="login">Login</a>
@@ -86,7 +95,7 @@
                     <div class="col-xl-6 col-lg-5 order-lg-1 ">
                     </div>
                     <div class="col-xl-6 col-lg-5 order-lg-1 ">
-                        <img src="img/logo.png" alt="">
+                        <img src="{{asset('img/logo.png')}}" alt="">
                         <div class="copyright">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;<script>
@@ -105,12 +114,12 @@
     </div>
     <!--====== Javascripts & Jquery ======-->
     
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/jquery.slicknav.min.js')}}"></script>
+    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('js/mixitup.min.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
   
 </body>
 </html>

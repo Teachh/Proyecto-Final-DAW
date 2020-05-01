@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Favorite extends Model
 {
     public function user() {
-        return $this->belongTo('App\User');
+        return $this->belongsTo('App\User');
     }
     public function draw() {
-        return $this->belongTo('App\Draw');
+        return $this->belongsTo('App\Draw');
     }
 }

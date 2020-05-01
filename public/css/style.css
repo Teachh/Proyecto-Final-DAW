@@ -1815,3 +1815,9 @@ Responsive
 #logomain {
 	width: 15rem;
 }
+.back{
+	color: white;
+}
+.back:hover{
+	color: #07192D;
+}
