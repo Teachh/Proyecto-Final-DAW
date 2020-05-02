@@ -41,19 +41,20 @@
         <img src="{{asset('img/logo.png')}}" id="logomain" alt="">
         <nav id="colorlib-main-menu" role="navigation">
             <ul>
-                <li class="colorlib-active"><a href="index.html">Inicio</a></li>
-                <li><a href="{{action('UserController@show', auth()->user()->id)}}">Perfil</a></li>
-                <li><a href="travel.html">Dibujo libre</a></li>
-                <li>                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                <li class="{{ Request::is('home') ? 'colorlib-active' : '' }}"><a href="{{url('/home')}}">Inicio
+                </a></li>
+                <li class="{{ Request::is('perfil/'.auth()->user()->id) ? 'colorlib-active' : '' }}"><a href="{{action('UserController@show', auth()->user()->id)}}">Perfil</a></li>
+                <li class="{{ Request::is('dibujo/libre') ? 'colorlib-active' : '' }}"><a href="{{action('DrawController@index')}}">Dibujo libre</a></li>
+                <li> <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a></li>
             </ul>
         </nav>
     </aside> <!-- END COLORLIB-ASIDE -->
-<!-- CONTENIDO -->
-@yield('content2')
-<!-- !CONTENIDO -->
+    <!-- CONTENIDO -->
+    @yield('content2')
+    <!-- !CONTENIDO -->
 </div><!-- END COLORLIB-PAGE -->
 
 <!-- loader -->
@@ -75,4 +76,5 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{{asset('js/home/google-map.js')}}"></script>
 <script src="{{asset('js/home/main.js')}}"></script>
+@yield('script')
 @endsection

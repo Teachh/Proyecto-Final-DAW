@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('css')
+@extends('layouts.logged')
 <style>
     @import url('https://fonts.googleapis.com/css?family=Raleway');
 
@@ -10,7 +9,8 @@
         font-size: 5vw;
     }
 
-    ul {
+    .followersul {
+        list-style-type: none;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         transform-origin: top left;
@@ -18,7 +18,7 @@
         margin: 20vw 25% 0 2%;
     }
 
-    li {
+    .followersli {
         transform-origin: top left;
         transform: skewY(-4.398705355deg) rotatez(-14.03624deg);
         padding-top: 150%;
@@ -44,11 +44,11 @@
 
 
 
-    li:nth-child(3n+1) .details {
+    .followersli:nth-child(3n+1) .details {
         background-color: #f9c22e;
     }
 
-    li:nth-child(3n+2) .details {
+    .followersli:nth-child(3n+2) .details {
         background-color: #35ce8d;
     }
 
@@ -77,13 +77,13 @@
         padding: 0.4em;
     }
 
-    li:nth-child(3n+1) h2,
-    li:nth-child(3n+1) p {
+    .followersli:nth-child(3n+1) h2,
+    .followersli:nth-child(3n+1) p {
         background-color: #f9c22e;
     }
 
-    li:nth-child(3n+2) h2,
-    li:nth-child(3n+2) p {
+    .followersli:nth-child(3n+2) h2,
+    .followersli:nth-child(3n+2) p {
         background-color: #35ce8d;
     }
 
@@ -106,15 +106,15 @@
         transition-duration: .3s;
     }
 
-    li:hover {
+    .followersli:hover {
         z-index: 4;
     }
 
-    li:hover .details {
-        transform: rotate(14.03624deg) translate(0%, 10%) scale(1.3);
+    .followersli:hover .details {
+        transform: rotate(14.03624deg) translate(0%, 10%);
     }
 
-    li:hover img {
+    .followersli:hover img {
         height: 210%;
         transform: translateX(-50%) translateY(-14%);
     }
@@ -124,7 +124,7 @@
             font-size: 2.75vw;
         }
 
-        ul {
+        .followersul {
             grid-template-columns: repeat(2, 1fr);
             grid-column-gap: 3vw;
             margin: 10vw 14vw 0 2vw;
@@ -136,7 +136,7 @@
             font-size: 1.95vw;
         }
 
-        ul {
+        .followersul {
             grid-template-columns: repeat(3, 1fr);
             grid-column-gap: 2vw;
             margin: 8vw 10vw 0 1vw;
@@ -148,7 +148,7 @@
             font-size: 1.5vw;
         }
 
-        ul {
+        .followersul {
             grid-template-columns: repeat(4, 1fr);
             grid-column-gap: 1.5vw;
             margin: 6vw 7.5vw 0 0.5vw;
@@ -160,7 +160,7 @@
             font-size: 1.25vw;
         }
 
-        ul {
+        .followersul {
             grid-template-columns: repeat(5, 1fr);
             grid-column-gap: 1vw;
             margin: 4.5vw 6vw 0 0.5vw;
@@ -172,7 +172,7 @@
             font-size: 1vw;
         }
 
-        ul {
+        .followersul {
             grid-template-columns: repeat(6, 1fr);
             grid-column-gap: 1vw;
             margin: 4vw 6vw 0 0.5vw;
@@ -180,12 +180,13 @@
     }
 
 </style>
-@endsection
-@section('content')
+@section('content2')
+<div id="colorlib-main">
+
 <div class="m-3">
-    <a class="back" href="{{action('UserController@show', $usuario->id)}}"><i class="fas fa-arrow-left"></i> Volver al perfil</a>
+    <a class="back" href="{{url()->previous()}}"><i class="fas fa-arrow-left"></i> Volver al perfil</a>
 </div>
-<ul>
+<ul class="followersul">
 @if(count($followers) == 0)
 <div style="margin-bottom:25rem">
 <h2>Actualmente el usuario {{$usuario->name}} no tiene seguidores</h2>
@@ -193,7 +194,7 @@
 @endif
 @foreach($followers as $follower)
 
-    <li>
+    <li class="followersli">
     
     <a href="{{action('UserController@show', App\User::findOrFail($follower->user_id_request)->id)}}">
         <div class="details">
@@ -206,4 +207,5 @@
     </li>
 @endforeach
 </ul>
+</div>
 @endsection

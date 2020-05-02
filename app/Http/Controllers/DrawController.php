@@ -14,7 +14,7 @@ class DrawController extends Controller
      */
     public function index()
     {
-        //
+        return view('draw.freeDraw');
     }
 
     /**
@@ -46,7 +46,7 @@ class DrawController extends Controller
      */
     public function show($id)
     {
-        return "Bienbenido al dibujo ". $id;
+        return "Accediento al dibujo";
     }
 
     /**

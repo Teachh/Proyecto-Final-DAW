@@ -1,10 +1,11 @@
-@extends('layouts.app')
-@section('css')
+@extends('layouts.logged')
+
+<style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     body {
         margin-top: auto;
-        background-color: #f1f1f1;
+        background-color: #5C746A;
     }
 
     .border {
@@ -22,7 +23,7 @@
 
     .image-section img {
         width: 100%;
-        height: 250px;
+        height: 25rem;
         position: relative;
     }
 
@@ -156,11 +157,11 @@
     }
 
 </style>
-@endsection
-@section('content')
-<div class="container main-secction my-5">
+@section('content2')
+<div id="colorlib-main">
+<div class="container main-secction my-5 ">
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 image-section">
+        <div class="col-md-12 col-sm-12 col-xs-12 image-section p-0">
             <img src="{{asset($user->background)}}">
         </div>
         
@@ -179,7 +180,7 @@
                         </form>
                     </div>
                     <div class="row user-detail-row">
-                        <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+                        <div class="pl-5 col-md-12 col-sm-12 user-detail-section2 pull-left">
                             <div class="border"></div>
                             <p>FOLLOWERS</p>
                             <span>{{$follow}}</span>
@@ -188,7 +189,7 @@
 
                 </div>
             </div>
-            <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+            <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section ">
                 <div class="row profile-right-section-row">
                     <div class="col-md-12 profile-header">
                         <div class="row">
@@ -257,7 +258,7 @@
                                                     <label>Email</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="email" name="email" value="{{$user->email}}">
+                                                    <input type="email" name="email" value="{{$user->email}}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="row mt-2">
@@ -297,5 +298,5 @@
         </div>
     </div>
 </div>
-
+</div>
 @endsection
