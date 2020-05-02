@@ -14,7 +14,7 @@ class DrawController extends Controller
      */
     public function index()
     {
-        return view('draw.freeDraw');
+        return view('draw.index');
     }
 
     /**
@@ -81,5 +81,13 @@ class DrawController extends Controller
     public function destroy(Draw $draw)
     {
         //
+    }
+
+    /**
+     * Mis funciones
+     */
+    public function freeDraw()
+    {
+        return view('draw.freeDraw');
     }
 }

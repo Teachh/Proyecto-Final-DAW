@@ -38,13 +38,14 @@
 <div id="colorlib-page">
     <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
     <aside id="colorlib-aside" role="complementary" class="js-fullheight">
-        <img src="{{asset('img/logo.png')}}" id="logomain" alt="">
+        <a href="{{url('/home')}}"><img src="{{asset('img/logo.png')}}" id="logomain" alt=""></a>
         <nav id="colorlib-main-menu" role="navigation">
             <ul>
                 <li class="{{ Request::is('home') ? 'colorlib-active' : '' }}"><a href="{{url('/home')}}">Inicio
                 </a></li>
                 <li class="{{ Request::is('perfil/'.auth()->user()->id) ? 'colorlib-active' : '' }}"><a href="{{action('UserController@show', auth()->user()->id)}}">Perfil</a></li>
-                <li class="{{ Request::is('dibujo/libre') ? 'colorlib-active' : '' }}"><a href="{{action('DrawController@index')}}">Dibujo libre</a></li>
+                <li class="{{ Request::is('dibujo') ? 'colorlib-active' : '' }}"><a href="{{action('DrawController@index')}}">Crear dibujo</a></li>
+                <li class="{{ Request::is('dibujo/libre') ? 'colorlib-active' : '' }}"><a href="{{action('DrawController@freeDraw')}}">Dibujo libre</a></li>
                 <li> <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}

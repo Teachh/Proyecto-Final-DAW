@@ -28,8 +28,9 @@ Route::get('perfil/{id}/follow', 'FollowController@create')->middleware('auth');
 Route::get('perfil/{id}/unfollow', 'FollowController@destroy')->middleware('auth');
 
 // RUTAS DE DIBUJO
-Route::get('/dibujo/libre', 'DrawController@index')->name('freedraw')->middleware('auth');
+Route::get('/dibujo/libre', 'DrawController@freeDraw')->name('freedraw')->middleware('auth');
 Route::get('/dibujo/{id}', 'DrawController@show')->name('drawid')->middleware('auth');
+Route::get('/dibujo', 'DrawController@index')->name('drawid')->middleware('auth');
 
 
 Auth::routes();
