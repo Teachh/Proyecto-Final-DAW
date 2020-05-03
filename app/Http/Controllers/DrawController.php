@@ -35,7 +35,7 @@ class DrawController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

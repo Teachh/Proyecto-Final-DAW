@@ -9,9 +9,10 @@
                             @foreach($draws as $draw)
                             <div class="col-md-12">
                                 <div class="blog-entry ftco-animate d-md-flex">
-                                    <a href="single.html" class="img img-2" style="background-image: url({{$draw->url}});"></a>
+                                    <a href="single.html" class="img img-2" style="background-image: url({{$draw->image}});"></a>
                                     <div class="text text-2 pl-md-4">
                                         <h3 class="mb-2"><a href="{{action('DrawController@show', $draw->id)}}">{{$draw->title}}</a></h3>
+                                        <p>{{$draw->description}}</p>
                                         <div class="meta-wrap">
                                             <p class="meta">
                                                 @php
@@ -32,8 +33,10 @@
                                                 <span><i class="fas fa-thumbs-down"></i> {{$neg}}</span>
                                             </p>
                                         </div>
-                                        <p class="mb-4"><a style="color:black" href="{{action('UserController@show', $draw->user->id)}}"><i class="fas fa-user"></i> {{$draw->user->name}}</a></p>
-                                        <p><a href="{{action('DrawController@show', $draw->id)}}" class="btn btn-outline-warning">Entrar al dibujo <i class="fas fa-eye"></i></a></p>
+                                        <div class="row">
+                                            <p class="mb-4 col-3"><a style="color:black" href="{{action('UserController@show', $draw->user->id)}}"><i class="fas fa-user"></i> {{$draw->user->name}}</a></p>
+                                            <p class="col-9"><a href="{{action('DrawController@show', $draw->id)}}" class="btn btn-outline-warning">Entrar al dibujo <i class="fas fa-eye"></i></a></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

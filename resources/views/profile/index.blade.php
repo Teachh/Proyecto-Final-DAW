@@ -159,7 +159,7 @@
 </style>
 @section('content2')
 <div id="colorlib-main">
-<div class="container main-secction my-5 ">
+<div class="container main-secction ">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 image-section p-0">
             <img src="{{asset($user->background)}}">

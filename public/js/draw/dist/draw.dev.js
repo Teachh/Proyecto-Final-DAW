@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
       svgString2Image(svgString, 2 * width, 2 * height, 'png', save); // passes Blob and filesize String to the callback
 
       function save(dataBlob, filesize) {
-        saveAs(dataBlob, 'D3 vis exported to PNG.png'); // FileSaver.js function
+        saveAs(dataBlob, 'dibujo.png'); // FileSaver.js function
       }
     }); // getSVGString ( svgNode ) and svgString2Image( svgString, width, height, format, callback )
 
