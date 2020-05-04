@@ -3,7 +3,7 @@
 <div id="colorlib-main">
     <div class="container main-secction my-3">
         <h1 class="mx-auto w-50 align-content-center">CREA TU DIBUJO!</h1>
-        <form method="POST" action="{{ route('drawcreate') }}">
+        <form method="POST" action="{{ route('drawcreate') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Nomde del dibujo</label>
@@ -31,6 +31,7 @@
 
                 </div>
             </div>
+            <p style="color:red;font-weight:bold">{{$messageError ?? ''}}</p>
             <button type="submit" class="btn btn-lg btn-primary">Crear Dibujo</button>
         </form>
     </div>

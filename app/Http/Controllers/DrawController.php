@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Draw;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DrawController extends Controller
 {
@@ -35,7 +36,57 @@ class DrawController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'required',
+            'draw' => 'required|image',
+            'image' => 'required|image',
+        ]);
+        if ($validator->fails()) {
+            $messageError = "No has introducido bien las imágenes!";
+            return view('draw.index', compact('messageError'));
+        }
+        else{
+            // Conseguir las dos imagenes
+            $draw = '';
+            $image = '';
+            if($request->draw != null ){
+                request()->validate([
+                    'draw' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+                $imageName = time().'.'.request()->draw->getClientOriginalExtension();
+                request()->draw->move(public_path('img/draws/draw'), $imageName);
+                
+                $ruta = public_path('img/draws/draw') . "/" . $imageName;
+        
+        
+                // Acabar de cambiar la imagen
+                $draw = 'img/draws/draw/'.$imageName;
+    
+            }
+            if($request->image != null ){
+                request()->validate([
+                    'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+                $imageName = time().'.'.request()->image->getClientOriginalExtension();
+                request()->image->move(public_path('img/draws/image'), $imageName);
+                
+                $ruta = public_path('img/draws/image') . "/" . $imageName;
+        
+        
+                // Acabar de cambiar la imagen
+                $image = 'img/draws/image/'.$imageName;
+                
+            }
+        }
+        // Hacer el insert
+        $d = new Draw();
+        $d->title = request('title');
+        $d->description = request('description');
+        $d->draw = $draw;
+        $d->image = $image;
+        $d->save();
+        return view('draw.created');
     }
 
     /**
