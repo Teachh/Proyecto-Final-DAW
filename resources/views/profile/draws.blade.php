@@ -198,8 +198,7 @@
             <div class="details">
                 <h2>{{$draw->title}}</h2>
                 <div class="product">
-                <!-- ACORDARSE DE PONER ASSET PARA QUE NO DE ERROR ( MIRAR FOLLOWERS) -->
-                    <img class="cardimg" src="{{$draw->image}}">
+                    <img class="cardimg" src="{{url($draw->image)}}">
                 </div>
             </div>
         </a>

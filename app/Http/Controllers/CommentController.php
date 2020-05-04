@@ -85,8 +85,22 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        //
+        $c = Comment::findOrFail($id)->delete();
+        return redirect('dibujo/'.$id);
+    }
+    // Corregir fallo de que no pueda darme 100000 likes o dislikes
+    public function like($id){
+        $c = Comment::findOrFail($id);
+        $c->like = $c->like+1;
+        $c->save();
+        return redirect('dibujo/'.$c->draw_id);
+    }
+    public function dislike($id){
+        $c = Comment::findOrFail($id);
+        $c->dislike = $c->dislike+1;
+        $c->save();
+        return redirect('dibujo/'.$c->draw_id);
     }
 }

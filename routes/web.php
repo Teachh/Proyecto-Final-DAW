@@ -42,6 +42,11 @@ Route::get('/vote/dislike/{id}', 'VoteController@dislike')->name('dislike')->mid
 
 // RUTAS DE COMENTARIOS
 Route::post('/comentario/{id}/post', 'CommentController@store')->name('commentcreate')->middleware('auth');
+Route::get('/comentario/{id}/delete', 'CommentController@destroy')->name('commentdelete')->middleware('auth');
+Route::get('/comentario/like/{id}', 'CommentController@like')->name('commentlike')->middleware('auth');
+Route::get('/comentario/dislike/{id}', 'CommentController@dislike')->name('commentdislike')->middleware('auth');
+
+// RUTAS DE Home
+Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
