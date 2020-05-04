@@ -32,8 +32,16 @@ Route::get('/dibujo/libre', 'DrawController@freeDraw')->name('freedraw')->middle
 Route::get('/dibujo/{id}', 'DrawController@show')->name('drawid')->middleware('auth');
 Route::get('/dibujo', 'DrawController@index')->name('drawid')->middleware('auth');
 Route::post('/dibujo/crear', 'DrawController@store')->name('drawcreate')->middleware('auth');
+Route::get('/dibujo/{id}/editar', 'DrawController@edit')->name('drawedit')->middleware('auth');
+Route::put('/dibujo/{id}/update', 'DrawController@update')->name('draweupdate')->middleware('auth');
 
 
+// RUTAS DE VOTOS
+Route::get('/vote/like/{id}', 'VoteController@like')->name('like')->middleware('auth');
+Route::get('/vote/dislike/{id}', 'VoteController@dislike')->name('dislike')->middleware('auth');
+
+// RUTAS DE COMENTARIOS
+Route::post('/comentario/{id}/post', 'CommentController@store')->name('commentcreate')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

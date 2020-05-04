@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Draw;
+use App\Vote;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -96,8 +98,24 @@ class DrawController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        return "Accediento al dibujo";
+    {   
+        $draw = Draw::findOrFail($id);
+        $votes = Vote::where('draw_id',$id)->get();
+        $comments = Comment::where('draw_id',$id)->get();
+        $votesPos = Vote::where('draw_id',$id)->where('vote','pos')->count();
+        $votesNeg = Vote::where('draw_id',$id)->where('vote','neg')->count();
+        $qp = Vote::where('draw_id',$id)->where('user_id',auth()->user()->id)->where('vote','pos')->count();
+        $qn = Vote::where('draw_id',$id)->where('user_id',auth()->user()->id)->where('vote','neg')->count();
+        $pos = false;
+        $neg = false;
+        if($qp != 0){
+            $pos = true;
+        }
+        else if($qn != 0){
+            $neg = true;
+        }
+        // Devolver los colores
+        return view('draw.draw', compact('draw','votes','votesPos','votesNeg','pos','neg','comments'));
     }
 
     /**
@@ -106,9 +124,10 @@ class DrawController extends Controller
      * @param  \App\Draw  $draw
      * @return \Illuminate\Http\Response
      */
-    public function edit(Draw $draw)
+    public function edit($id)
     {
-        //
+        $draw = Draw::findOrFail($id);
+        return view('draw.edit', compact('draw'));
     }
 
     /**
@@ -118,9 +137,46 @@ class DrawController extends Controller
      * @param  \App\Draw  $draw
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Draw $draw)
+    public function update(Request $request, $id)
     {
-        //
+        
+        $d = Draw::findOrFail($id);
+        $d->update($request->all());
+        // Para guardar la ruta mas tarde
+        $draw = '';
+        $image = '';
+        if($request->draw != null ){
+            request()->validate([
+                'draw' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $imageName = time().'.'.request()->draw->getClientOriginalExtension();
+            request()->draw->move(public_path('img/draws/draw'), $imageName);
+            
+            $ruta = public_path('img/draws/draw') . "/" . $imageName;
+    
+    
+            // Acabar de cambiar la imagen
+            $draw = 'img/draws/draw/'.$imageName;
+            $d->draw = $draw;
+            $d->save();
+
+        }
+        if($request->image != null ){
+            request()->validate([
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $imageName = time().'.'.request()->image->getClientOriginalExtension();
+            request()->image->move(public_path('img/draws/image'), $imageName);
+            
+            $ruta = public_path('img/draws/image') . "/" . $imageName;
+    
+    
+            // Acabar de cambiar la imagen
+            $image = 'img/draws/image/'.$imageName;
+            $d->image = $image;
+            $d->save();
+        }
+        return redirect('dibujo/'.$id);
     }
 
     /**

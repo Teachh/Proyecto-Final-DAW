@@ -24,7 +24,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -33,9 +33,16 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $c = new Comment();
+        $c->user_id = auth()->user()->id;
+        $c->draw_id = $id;
+        $c->text = request('text');
+        $c->like = 0;
+        $c->dislike = 0;
+        $c->save();
+        return redirect('dibujo/'.$id);
     }
 
     /**

@@ -82,4 +82,26 @@ class VoteController extends Controller
     {
         //
     }
+
+    // MIS FUNCIONES
+    public function like($id){
+        // Borrar si existia un voto antes
+        $del = Vote::where('user_id',auth()->user()->id)->where('draw_id',$id)->delete();
+        $v = new Vote();
+        $v->user_id = auth()->user()->id;
+        $v->draw_id = $id;
+        $v->vote = 'pos';
+        $v->save();
+        return redirect('/dibujo/'.$id);
+    }
+    public function dislike($id){
+        // Borrar si existia un voto antes
+        $del = Vote::where('user_id',auth()->user()->id)->where('draw_id',$id)->delete();
+        $v = new Vote();
+        $v->user_id = auth()->user()->id;
+        $v->draw_id = $id;
+        $v->vote = 'neg';
+        $v->save();
+        return redirect('/dibujo/'.$id);
+    }
 }

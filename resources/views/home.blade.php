@@ -9,7 +9,7 @@
                             @foreach($draws as $draw)
                             <div class="col-md-12">
                                 <div class="blog-entry ftco-animate d-md-flex">
-                                    <a href="single.html" class="img img-2" style="background-image: url({{$draw->image}});"></a>
+                                    <a href="{{action('UserController@show',$draw->user->id)}}" class="img img-2" style="background-image: url({{$draw->image}});"></a>
                                     <div class="text text-2 pl-md-4">
                                         <h3 class="mb-2"><a href="{{action('DrawController@show', $draw->id)}}">{{$draw->title}}</a></h3>
                                         <p>{{$draw->description}}</p>
