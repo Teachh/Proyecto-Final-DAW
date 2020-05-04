@@ -135,6 +135,9 @@
             },
             success: function(data) {
                 $('#dibujos').html(`${data}`);
+            },
+            error: function(data){
+                console.log(data);
             }
         });
     });

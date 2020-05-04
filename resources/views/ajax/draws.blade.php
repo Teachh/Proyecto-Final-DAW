@@ -1,6 +1,8 @@
-@foreach($draws as $draw)
-<!-- <div class="col-md-12">
-    <div class="blog-entry ftco-animate d-md-flex">-->
+@foreach($draws as $d)
+@php
+    // Arreglar error que te lo detecta mal
+    $draw = App\Draw::findOrFail($d->id);
+@endphp
     <div class="col-md-6 d-flex mb-4 mt-2">
         <img class="w-25 h-50  rounded border border-warning" src="{{url($draw->image)}}">
         <div class="text text-2 pl-md-4">
@@ -34,6 +36,4 @@
             </div>
         </div>
         </div>
-<!--    </div>
-</div>-->
 @endforeach

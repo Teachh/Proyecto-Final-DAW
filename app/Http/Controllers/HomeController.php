@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 use App\Draw;
 use App\User;
@@ -39,13 +40,28 @@ class HomeController extends Controller
         if($request->ajax()){
             // hay una ordenacion
             if(request('order') != null){
+                $draws = '';
                 switch (request('order')) {
                     case 'vpos':
-                        // SELECT d.id, v.vote, count(*) FROM draws d, votes v WHERE v.draw_id = d.id AND v.vote = "pos" GROUP BY d.id;
+                        // SELECT d.id, v.vote, count(*) as cnt FROM draws d, votes v WHERE v.draw_id = d.id AND v.vote = "pos" GROUP BY d.id ORDER BY cnt desc
+                        $draws = DB::table('draws')
+                                ->join('votes','draws.id', '=', 'votes.draw_id')
+                                ->select(DB::raw('draws.*, count(*) as cnt'))
+                                ->where('votes.vote', '=', 'pos')
+                                ->groupBy('votes.draw_id')
+                                ->orderBy('cnt','DESC')
+                                ->get();
+                        
                         break;
                     case 'vneg':
-                        // SELECT d.id, v.vote, count(*) FROM draws d, votes v WHERE v.draw_id = d.id AND v.vote = "neg" GROUP BY d.id;
-                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('','')->get();
+                        // SELECT d.id, v.vote, count(*) as cnt FROM draws d, votes v WHERE v.draw_id = d.id AND v.vote = "pos" GROUP BY d.id ORDER BY cnt ASC
+                        $draws = DB::table('draws')
+                                ->join('votes','draws.id', '=', 'votes.draw_id')
+                                ->select(DB::raw('draws.*, count(*) as cnt'))
+                                ->where('votes.vote', '=', 'pos')
+                                ->groupBy('votes.draw_id')
+                                ->orderBy('cnt','ASC')
+                                ->get();
                         break;
                     case 'spos':
                         $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('','')->get();
@@ -60,7 +76,7 @@ class HomeController extends Controller
                         $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('created_at','ASC')->get();
                         break;
                     default:
-                        # code...
+                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('created_at','ASC')->get();
                         break;
                 }
                 return view('ajax.draws', compact('draws'))->render();

@@ -305,14 +305,14 @@
             Se ha editado correctamente
         </div>
         @endif
-        <div class="row">
+        <div class="container">
             <div class="row shadow-lg bg-white rounded py-3">
                 <div class="col-12 col-md-5">
                     <h3>Foto original</h3>
                     <img src="{{url($draw->image)}}" class="w-100" alt="Picture">
                 </div>
                 <div class="col-md-1 bg-primary px-4" style=" border-left: 2rem solid #5C746A;"></div>
-                <div class="col-12 col-md-5">
+                <div class="col-12 col-md-6">
                     <h3>Dibujo</h3>
                     <img src="{{url($draw->draw)}}" class="w-100" alt="Draw">
                 </div>
