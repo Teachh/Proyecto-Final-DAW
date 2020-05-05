@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('biography')->nullable()->default('Nuevo usuario en CendraDraw!');
             $table->string('rol')->nullable();
             $table->string('profile_picture')->nullable()->default('profileImages/default.png');
             $table->string('background')->nullable()->default('https://www.xtrafondos.com/wallpapers/espacio-con-estrellas-2899.jpg');

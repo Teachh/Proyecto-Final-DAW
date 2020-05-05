@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('css')
 <link rel="stylesheet" href="css/registerlogin.css" />
-
 @endsection
 @section('content')
 <!-- CODIGO ANTIGO
@@ -76,7 +75,7 @@
     </div>
 </div>
 CODIGO ANTIGUO-->
-<div class="container h-100 mt-5 mb-5">
+<div class="container h-100 my-5">
     <div class="d-flex justify-content-center h-100">
         <div class="user_card">
             <div class="d-flex justify-content-center">

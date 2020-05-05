@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    if(auth()->user() == true){
+        return redirect('home');
+    }
     return view('welcome');
 });
 
@@ -23,6 +26,7 @@ Route::get('/perfil', 'UserController@index')->name('perfil')->middleware('auth'
 Route::get('/perfil/{id}', 'UserController@show')->name('perfilid')->middleware('auth');
 Route::put('perfil/edit/{id}', 'UserController@update')->middleware('auth');
 Route::get('perfil/{id}/seguidores', 'UserController@getFollowers')->middleware('auth');
+Route::get('perfil/{id}/seguidos', 'UserController@getFollows')->middleware('auth');
 Route::get('perfil/{id}/dibujos', 'UserController@showDraws')->middleware('auth');
 Route::get('perfil/{id}/follow', 'FollowController@create')->middleware('auth');
 Route::get('perfil/{id}/unfollow', 'FollowController@destroy')->middleware('auth');
@@ -34,6 +38,7 @@ Route::get('/dibujo', 'DrawController@index')->name('drawid')->middleware('auth'
 Route::post('/dibujo/crear', 'DrawController@store')->name('drawcreate')->middleware('auth');
 Route::get('/dibujo/{id}/editar', 'DrawController@edit')->name('drawedit')->middleware('auth');
 Route::put('/dibujo/{id}/update', 'DrawController@update')->name('draweupdate')->middleware('auth');
+Route::put('/dibujo/{id}/borrar', 'DrawController@destroy')->name('drawedestroy')->middleware('auth');
 
 
 // RUTAS DE VOTOS
@@ -44,7 +49,7 @@ Route::get('/vote/dislike/{id}', 'VoteController@dislike')->name('dislike')->mid
 Route::post('/comentario/{id}/post', 'CommentController@store')->name('commentcreate')->middleware('auth');
 Route::get('/comentario/{id}/delete', 'CommentController@destroy')->name('commentdelete')->middleware('auth');
 Route::get('/comentario/like/{id}', 'CommentController@like')->name('commentlike')->middleware('auth');
-Route::get('/comentario/dislike/{id}', 'CommentController@dislike')->name('commentdislike')->middleware('auth');
+Route::put('/comentario/dislike/{id}', 'CommentController@dislike')->name('commentdislike')->middleware('auth');
 
 // RUTAS DE Home
 Route::get('/home', 'HomeController@index')->name('home');

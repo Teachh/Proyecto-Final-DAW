@@ -2,7 +2,7 @@
 @section('content2')
 <style>
     .botonesMano {
-        font-size: 3rem;
+        font-size: 2rem;
         color: lightgray;
     }
 
@@ -294,9 +294,36 @@
             <div class="col-12 col-md-8">
                 <h1 class="mb-2">{{$draw->title}}</h1>
             </div>
-            <div class="col-12 col-md-4">
-                @if(auth()->user()->id == $draw->user->id)
-                <a href="{{url('dibujo/'.$draw->id.'/editar')}}"><button class="btn btn-warning btn-block mt-3">Editar dibujo</button></a>
+            <div class="col-12 col-md-4 mb-4">
+                @if(auth()->user()->id == $draw->user->id || auth()->user()->rol == 'admin')
+                <div class="row">
+                <a href="{{url('dibujo/'.$draw->id.'/editar')}}" class="col-6"><button class="btn btn-warning btn-block mt-3 ">Editar dibujo</button></a>
+                <a data-toggle="modal" data-target="#borrarModal" class="col-6"><button class="btn btn-danger btn-block mt-3">Borrar dibujo</button></a>
+                <!-- Modal -->
+                <div class="modal fade" id="borrarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Desea borrar su dibujo?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Si su dibujo se borrar se borrará de nuestra base de datos y no se podrá recuperar!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <form action="{{action('DrawController@destroy', $draw->id)}}" method="POST" style="display:inline" >
+                            {{ method_field('PUT') }}
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-danger">Borrar</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                </div>
                 @endif
             </div>
         </div>
@@ -318,14 +345,16 @@
                 </div>
             </div>
             <div class="col-12 row mt-5 ">
-                <div class="col-9">
-                    <a href="{{url('vote/like/'.$draw->id)}}" class="botonesMano mx-2 @if($pos)text-success @endif"><i class="fas fa-thumbs-up"></i></a>
-                    <a href="{{url('vote/dislike/'.$draw->id)}}" class="botonesMano mx-2 @if($neg)text-danger @endif"><i class="fas fa-thumbs-down"></i></a>
-                    <a class="text-monospace botonesMano">{{count($votes)}}</a>
-                    <a class="botonesManoPeque mx-2 text-success">{{$votesPos}} <i class="fas fa-thumbs-up"></i></a>
-                    <a class="botonesManoPeque mx-2 text-danger">{{$votesNeg}} <i class="fas fa-thumbs-down"></i></a>
+                <div class="col-md-9">
+                    <div class="col-md-6">
+                        <a href="{{url('vote/like/'.$draw->id)}}" class="botonesMano mx-2 @if($pos)text-success @endif"><i class="fas fa-thumbs-up"></i></a>
+                        <a href="{{url('vote/dislike/'.$draw->id)}}" class="botonesMano mx-2 @if($neg)text-danger @endif"><i class="fas fa-thumbs-down"></i></a>
+                        <a class="text-monospace botonesMano">{{count($votes)}}</a>
+                        <a class="botonesManoPeque mx-2 text-success">{{$votesPos}} <i class="fas fa-thumbs-up"></i></a>
+                        <a class="botonesManoPeque mx-2 text-danger">{{$votesNeg}} <i class="fas fa-thumbs-down"></i></a>
+                    </div>
                 </div>
-                <div class="col-3">
+                <div class="mt-3 mt-md-0 col-md-3">
                     <div class="block-21 mb-4 d-flex bg-info">
                         @php
                         // conseguir el usuario actual para iterar con el
@@ -347,11 +376,11 @@
                 <form method="POST" action="{{ action('CommentController@store',$draw->id) }}">
                     <div class="row">
                         @csrf
-                        <div class="col-9">
+                        <div class="col-12 col-md-9">
                             <textarea name="text" required class="form-control" id="text" rows="3" placeholder="Comentario..."></textarea>
                         </div>
-                        <div class="col-3">
-                            <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+                        <div class="col-12 col-md-3">
+                            <button type="submit" class="btn btn-info w-100 mt-3 mt-md-0">Enviar Comentario</button>
                         </div>
                     </div>
                 </form>
@@ -370,7 +399,7 @@
                                 <div class="actions">
                                     <a href="{{url('comentario/like/'.$c->id)}}" class="botonesCom mx-2">{{$c->like}} <i class="fas fa-thumbs-up"></i></a>
                                     <a href="{{url('comentario/dislike/'.$c->id)}}" class="botonesCom mx-2">{{$c->dislike}} <i class="fas fa-thumbs-down"></i></a>
-                                    @if(auth()->user()->id == $c->user->id)
+                                    @if(auth()->user()->id == $c->user->id || auth()->user()->rol == 'admin')
                                         <a href="{{url('comentario/'.$c->id.'/delete')}}" class="botonesCom mx-2"><i class="fas fa-eraser"></i></a>
                                     @endif
                                 </div>

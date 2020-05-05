@@ -465,6 +465,7 @@ class ComposerStaticInit5b6e69bd8c40ebcb6ac2afb8aa792031
     );
 
     public static $classMap = array (
+        'AllSeeder' => __DIR__ . '/../..' . '/database/seeds/AllSeeder.php',
         'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Draw' => __DIR__ . '/../..' . '/app/Draw.php',
@@ -4644,6 +4645,7 @@ class ComposerStaticInit5b6e69bd8c40ebcb6ac2afb8aa792031
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
         'VoteSeeder' => __DIR__ . '/../..' . '/database/seeds/VoteSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',

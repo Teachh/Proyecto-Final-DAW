@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->bigInteger('draw_id')->unsigned()->default('1');
             $table->foreign('draw_id')->references('id')->on('draws')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('text');
+            $table->text('text');
             $table->integer('like');
             $table->integer('dislike');
             $table->timestamps();

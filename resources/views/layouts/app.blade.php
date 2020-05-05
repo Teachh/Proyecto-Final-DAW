@@ -36,18 +36,15 @@
     <div id="app">
         <!-- Header section -->
         <header class="header-section clearfix">
-            @if(auth())
+            @if(auth()->user())
             <a href="{{ url('/home') }}" class="site-logo">
             @else
             <a href="{{ url('/') }}" class="site-logo">
             @endif
-                <img src="{{asset('img/logo.png')}}" id="logomain" alt="">
+            <img src="{{asset('img/logo.png')}}" id="logomain" alt="">
             </a>
             <div class="header-right">
-                @if(auth()->user())
-                <a href="{{action('UserController@index')}}" class="hr-btn">{{auth()->user()->name}}</a>
-                <span>|</span>
-                @else
+                @if(url()->current() == url('/'))
                 <a href="#footer" class="hr-btn">Ayuda</a>
                 <span>|</span>
                 @endif
@@ -56,25 +53,6 @@
                     <a href="{{ url('/login') }}" class="login">Login</a>
                     <a href="{{ url('/register') }}" class="register">Regístrate</a>
                     @else
-                    <!-- ESTO FALTA CAMBIAR
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                     -->
-                    <!-- ESTO FALTA CAMBIAR -->
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
@@ -88,6 +66,7 @@
         </header>
         <!-- Header section end -->
         @yield('content')
+
         <!-- Footer section -->
         <footer id="footer" class="footer-section">
             <div class="container">

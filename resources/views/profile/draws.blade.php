@@ -1,183 +1,188 @@
 @extends('layouts.logged')
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Raleway');
+ @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+body {
+  font-family: "Open Sans", sans-serif;
+  background: #eeeeee;
+}
 
-    body {
-        background: #5c746a;
-        color: #001a23;
-        font-family: 'Raleway', sans-serif;
-        font-size: 5vw;
-    }
+.container {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 980px;
+}
 
-    .drawsul {
-        list-style-type: none;
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        transform-origin: top left;
-        transform: skewY(4.398705355deg);
-        margin: 20vw 25% 0 2%;
-    }
+header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  font-size: 1em;
+  font-weight: 600;
+  color: #bdbdbd;
+  padding: 20px;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  text-align: center;
+}
+header .button-col {
+  width: 240px;
+  text-align: left;
+}
+header .status-col {
+  width: 145px;
+}
+header .progress-col {
+  width: 190px;
+}
+header .dates-col {
+  width: 150px;
+}
+header .priority-col {
+  width: 170px;
+}
+header .icon-col {
+  width: 30px;
+  text-align: right;
+}
+header button {
+  color: #bdbdbd;
+  outline: none;
+  border: none;
+  background: #d5d5d5;
+  padding: 10px 20px;
+  border-radius: 2.5px;
+  margin-right: 20px;
+  font-size: 1em;
+  font-weight: 600;
+}
+header button:hover {
+  cursor: pointer;
+  background: #3d3d44;
+}
+header label {
+  display: inline-block;
+  margin: 0 20px;
+  text-align: center;
+}
+header .icon-col {
+  padding-right: 20px;
+}
 
-    .drawsli {
-        transform-origin: top left;
-        transform: skewY(-4.398705355deg) rotatez(-14.03624deg);
-        padding-top: 150%;
-        z-index: 1;
-        transition-property: z-index;
-        transition-duration: .3s;
-    }
+ul.name-items li.item {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  margin: 20px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+}
+ul.name-items li.item.type1 .name .icon {
+  background: #9575cd;
+}
+ul.name-items li.item.type2 .name .icon {
+  background: #f48fb1;
+}
+ul.name-items li.item.type3 .name .icon {
+  background: #9575cd;
+}
+ul.name-items li.item.type4 .name .icon {
+  background: #4fc3f7;
+}
+ul.name-items li.item .name {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  width: 240px;
+}
+ul.name-items li.item .name .icon {
+  background: #bdbdbd;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+ul.name-items li.item .name .name {
+  background: #eeeeee;
+  margin-left: 20px;
+  width: 180px;
+  height: 25px;
+  border-radius: 15px;
+}
+ul.name-items li.item .status {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  font-size: 1em;
+  color: #2e7d32;
+  width: 145px;
+  margin-left: 30px;
+}
+ul.name-items li.item .status .icon {
+  background: #2e7d32;
+  margin-right: 10px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+ul.name-items li.item .status .icon.risk {
+  background: red;
+}
+ul.name-items li.item .status .icon.warning {
+  background: #ffa000;
+}
+ul.name-items li.item .status .icon.off {
+  background: #bf360c;
+}
+ul.name-items li.item .progress {
+  width: 190px;
+}
+ul.name-items li.item .progress progress {
+  display: block;
+  margin-left: 0;
+  -webkit-appearance: none;
+  height: 12.5px;
+  width: 142.5px;
+}
+ul.name-items li.item .progress progress::-webkit-progress-bar {
+  background-color: #eeeeee;
+  border-radius: 5px;
+}
+ul.name-items li.item .progress ::-webkit-progress-value {
+  background-color: #4dd0e1;
+  border-radius: 5px;
+}
+ul.name-items li.item .dates {
+  width: 150px;
+}
+ul.name-items li.item .dates .bar,
+ul.name-items li.item .priority .bar {
+  background: #eeeeee;
+  width: 100px;
+  height: 25px;
+  border-radius: 15px;
+}
+ul.name-items li.item .priority {
+  width: 144.5px;
+}
+ul.name-items li.item .priority .bar {
+  background: #ffcdd2;
+}
+ul.name-items li.item .user {
+  width: 30px;
+}
+ul.name-items li.item .user img {
+  border-radius: 50%;
+}
 
-    .details {
-        position: absolute;
-        z-index: 2;
-        width: 98%;
-        height: 95%;
-        top: 0;
-        background-color: #53b3cb;
-        border-radius: 2vw;
-        -webkit-filter: drop-shadow(2px 6px 3px rgba(0, 0, 0, 0.4));
-        filter: drop-shadow(2px 6px 3px rgba(0, 0, 0, 0.4));
-        transform: rotate(0deg) translate(0, 0);
-        transition-property: transform;
-        transition-duration: .3s;
-    }
-
-
-
-    .drawsli:nth-child(3n+1) .details {
-        background-color: #f9c22e;
-    }
-
-    .drawsli:nth-child(3n+2) .details {
-        background-color: #35ce8d;
-    }
-
-    .product {
-        position: absolute;
-        z-index: 3;
-        width: 88%;
-        height: 91%;
-        top: 0;
-        transform: translateX(6.5%) translateY(5%);
-        border-radius: 1.2vw;
-        background: #001a23;
-        overflow: hidden;
-    }
-
-    h2,
-    p,
-    .cardimg {
-        position: absolute;
-        z-index: 4;
-    }
-
-    h2,
-    p {
-        background-color: #53b3cb;
-        padding: 0.4em;
-    }
-
-    .drawsli:nth-child(3n+1) h2,
-    .drawsli:nth-child(3n+1) p {
-        background-color: #f9c22e;
-    }
-
-    .drawsli:nth-child(3n+2) h2,
-    .drawsli:nth-child(3n+2) p {
-        background-color: #35ce8d;
-    }
-
-    h2 {
-        top: 3.5%;
-        left: 4%;
-    }
-
-    p {
-        bottom: 3.5%;
-        right: 5%;
-        font-size: 1.2em;
-    }
-
-    .cardimg {
-        height: 110%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-2%);
-        transition-property: height, transform;
-        transition-duration: .3s;
-    }
-
-    .drawsli:hover {
-        z-index: 4;
-    }
-
-    .drawsli:hover .details {
-        transform: rotate(14.03624deg) translate(0%, 10%);
-    }
-
-    .drawsli:hover img {
-        height: 210%;
-        transform: translateX(-50%) translateY(-14%);
-    }
-
-    @media (min-width:300px) {
-        body {
-            font-size: 2.75vw;
-        }
-
-        .drawsul {
-            grid-template-columns: repeat(2, 1fr);
-            grid-column-gap: 3vw;
-            margin: 10vw 14vw 0 2vw;
-        }
-    }
-
-    @media (min-width:600px) {
-        body {
-            font-size: 1.95vw;
-        }
-
-        .drawsul {
-            grid-template-columns: repeat(3, 1fr);
-            grid-column-gap: 2vw;
-            margin: 8vw 10vw 0 1vw;
-        }
-    }
-
-    @media (min-width:900px) {
-        body {
-            font-size: 1.5vw;
-        }
-
-        .drawsul {
-            grid-template-columns: repeat(4, 1fr);
-            grid-column-gap: 1.5vw;
-            margin: 6vw 7.5vw 0 0.5vw;
-        }
-    }
-
-    @media (min-width:1200px) {
-        body {
-            font-size: 1.25vw;
-        }
-
-        .drawsul {
-            grid-template-columns: repeat(5, 1fr);
-            grid-column-gap: 1vw;
-            margin: 4.5vw 6vw 0 0.5vw;
-        }
-    }
-
-    @media (min-width:1500px) {
-        body {
-            font-size: 1vw;
-        }
-
-        .drawsul {
-            grid-template-columns: repeat(6, 1fr);
-            grid-column-gap: 1vw;
-            margin: 4vw 6vw 0 0.5vw;
-        }
-    }
 
 </style>
 @section('content2')
@@ -186,24 +191,32 @@
     <div class="m-3">
         <a class="back" href="{{url()->previous()}}"><i class="fas fa-arrow-left"></i> Volver al perfil</a>
     </div>
-    <ul class="drawsul">
-    @if(count($draws) == 0)
-    <div style="margin-bottom:25rem">
-    <h2>Actualmente el usuario {{$usuario->name}} no tiene dibujos aún</h2>
-    </div>
-    @endif
-    @foreach($draws as $draw)
-        <li class="drawsli">
-        <a href="{{action('DrawController@show', $draw->id)}}">
-            <div class="details">
-                <h2>{{$draw->title}}</h2>
-                <div class="product">
-                    <img class="cardimg" src="{{url($draw->image)}}">
-                </div>
-            </div>
-        </a>
-        </li>
-    @endforeach
-    </ul>
-    </div>
+    
+
+<section class="container">
+
+	
+
+	<!-- List Items -->
+	<ul class="name-items">
+        @foreach($draws as $draw)
+		
+		<!-- List Item -->
+		<li class="item type1 row">
+			<div class="name col-12 col-md-4">
+				<div class="h-100 p-2"><h3><a href="{{action('DrawController@show', $draw->id)}}">{{$draw->title}}</a></h3> </div>
+			</div>
+
+			<div class="name col-12 col-md-4">
+				<div class="h-100 p-2">{{\Illuminate\Support\Str::limit($draw->description, 100, $end='...')}} </div>
+			</div>
+
+			<div class="user col-12 col-md-4">
+				<a href="{{action('DrawController@show', $draw->id)}}"><img src="{{url($draw->image)}}" alt="Image 001"/></a>
+			</div>
+		</li>
+        @endforeach           
+	</ul>
+
+</section>
 @endsection

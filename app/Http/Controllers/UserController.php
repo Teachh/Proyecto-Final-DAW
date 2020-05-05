@@ -20,7 +20,8 @@ class UserController extends Controller
     {
         $user = auth()->user();
         $follow = Follow::where('user_id', $user->id)->count();
-        return view('profile.index', compact('user', 'follow'));
+        $following = Follow::where('user_id_request', $user->id)->count();
+        return view('profile.index', compact('user', 'follow', 'following'));
     }
 
     /**
@@ -54,7 +55,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $follow = Follow::where('user_id', $user->id)->count();
-        return view('profile.index', compact('user', 'follow'));
+        $following = Follow::where('user_id_request', $user->id)->count();
+        return view('profile.index', compact('user', 'follow', 'following'));
     }
 
     /**
@@ -138,6 +140,11 @@ class UserController extends Controller
         $followers = Follow::where('user_id', $id)->get();
         $usuario = User::findOrFail($id)->first();
         return view('profile.followers', compact('followers', 'usuario'));
+    }
+    public function getFollows($id){
+        $followers = Follow::where('user_id_request', $id)->get();
+        $usuario = User::findOrFail($id)->first();
+        return view('profile.follows', compact('followers', 'usuario'));
     }
     public function showDraws($id){
         $draws = Draw::where('user_id', $id)->get();

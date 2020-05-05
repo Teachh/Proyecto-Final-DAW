@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $draws = Draw::all();
+        $draws = Draw::paginate(10);
         // Personas con mas seguidores
         $popularUsers = User::all();
         $popularUsersOrd = [];
@@ -36,6 +36,8 @@ class HomeController extends Controller
             $popularUsersOrd[$p->id] = count($p->follows);
         }
         arsort($popularUsersOrd);
+        // Administradores
+        $admins = User::where('rol','admin')->get();
         // Si es ajax para cambiar los rsultados
         if($request->ajax()){
             // hay una ordenacion
@@ -50,7 +52,7 @@ class HomeController extends Controller
                                 ->where('votes.vote', '=', 'pos')
                                 ->groupBy('votes.draw_id')
                                 ->orderBy('cnt','DESC')
-                                ->get();
+                                ->paginate(10);
                         
                         break;
                     case 'vneg':
@@ -58,33 +60,33 @@ class HomeController extends Controller
                         $draws = DB::table('draws')
                                 ->join('votes','draws.id', '=', 'votes.draw_id')
                                 ->select(DB::raw('draws.*, count(*) as cnt'))
-                                ->where('votes.vote', '=', 'pos')
+                                ->where('votes.vote', '=', 'neg')
                                 ->groupBy('votes.draw_id')
-                                ->orderBy('cnt','ASC')
-                                ->get();
-                        break;
-                    case 'spos':
-                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('','')->get();
-                        break;
-                    case 'sneg':
-                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('','')->get();
+                                ->orderBy('cnt','DESC')
+                                ->paginate(10);
                         break;
                     case 'npos':
-                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('created_at','DESC')->get();
+                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('title','ASC')->paginate(10);
                         break;
                     case 'nneg':
-                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('created_at','ASC')->get();
+                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('title','DESC')->paginate(10);
+                        break;
+                    case 'npos':
+                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('created_at','DESC')->paginate(10);
+                        break;
+                    case 'nneg':
+                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('created_at','ASC')->paginate(10);
                         break;
                     default:
-                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('created_at','ASC')->get();
+                        $draws = Draw::where('title', 'like', '%'.request('search').'%')->orderBy('created_at','ASC')->paginate(10);
                         break;
                 }
                 return view('ajax.draws', compact('draws'))->render();
             }
             // sino retorna esto por defecto
-            $draws = Draw::where('title', 'like', '%'.request('search').'%')->get();
+            $draws = Draw::where('title', 'like', '%'.request('search').'%')->paginate(10);
             return view('ajax.draws', compact('draws'))->render();
         }
-        return view('home', compact('draws', 'popularUsersOrd'));
+        return view('home', compact('draws', 'popularUsersOrd','admins'));
     }
 }

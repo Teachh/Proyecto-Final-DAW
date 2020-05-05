@@ -6,8 +6,8 @@ a:hover {
 }
 body {
     background-image: url("../img/background-login.png");
-    background-size: 100rem;
-    background-repeat: no-repeat;   
+    background-size: 120rem;
+    background-repeat: repeat;   
     background-position: 0rem -10rem;
 }
 
@@ -81,4 +81,8 @@ body {
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #FC0054 !important;
+}
+
+footer{
+    display: none;
 }

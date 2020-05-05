@@ -3,9 +3,10 @@
     // Arreglar error que te lo detecta mal
     $draw = App\Draw::findOrFail($d->id);
 @endphp
-    <div class="col-md-6 d-flex mb-4 mt-2">
-        <img class="w-25 h-50  rounded border border-warning" src="{{url($draw->image)}}">
-        <div class="text text-2 pl-md-4">
+<div class="container">
+    <div class="col-md-12 row mb-4 mt-2">
+        <img class="w-25 h-50  rounded-circle col-12 col-md-4" src="{{url($draw->image)}}">
+        <div class="col-12 col-md-8 text text-2 pl-md-4">
             <h3 class="mb-2"><a href="{{action('DrawController@show', $draw->id)}}">{{$draw->title}}</a></h3>
             <p>{{$draw->description}}</p>
             <div class="row">
@@ -35,5 +36,7 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
+</div>
 @endforeach
+{!! $draws->links() !!}

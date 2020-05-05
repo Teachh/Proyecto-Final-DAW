@@ -185,9 +185,11 @@ class DrawController extends Controller
      * @param  \App\Draw  $draw
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Draw $draw)
+    public function destroy($id)
     {
-        //
+        $d = Draw::findOrFail($id);
+        $d->delete();
+        return view('draw.deleted');
     }
 
     /**
