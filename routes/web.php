@@ -54,13 +54,6 @@ Route::put('/comentario/dislike/{id}', 'CommentController@dislike')->name('comme
 // RUTAS DE Home
 Route::get('/home', 'HomeController@index')->name('home');
 
-// RUTAS DE LA API
-Route::resource('api/draw', 'APIDrawController');
-Route::resource('api/follow', 'APIFollowController');
-Route::resource('api/user', 'APIUserController');
-Route::resource('api/vote', 'APIVoteController');
-Route::resource('api/comment', 'APICommentController');
-
 
 // RUTAS DE LOGIN Y REGISTRO
 Auth::routes();
