@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Comment;
 
-class APIUserController extends Controller
+class APICommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class APIUserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return Comment::all();
     }
 
     /**
@@ -35,7 +35,7 @@ class APIUserController extends Controller
      */
     public function store(Request $request)
     {
-        return User::create($request->all());
+        return Comment::create($request->all());
     }
 
     /**
@@ -46,7 +46,7 @@ class APIUserController extends Controller
      */
     public function show($id)
     {
-        return User::findOrFail($id);
+        return Comment::findOrFail($id);
     }
 
     /**
@@ -69,7 +69,7 @@ class APIUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $d = User::findOrFail($id);
+        $d = Comment::findOrFail($id);
         $d->update($request->all());
         return $d;
     }
@@ -82,7 +82,7 @@ class APIUserController extends Controller
      */
     public function destroy($id)
     {
-        $d = User::findOrFail($id);
+        $d = Comment::findOrFail($id);
         $d->delete();
 
         return 204;
