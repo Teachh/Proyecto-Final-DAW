@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\API;
 use Illuminate\Http\Request;
 
-class APIController extends Controller
+class APIFollowController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +40,10 @@ class APIController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\API  $aPI
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(API $aPI)
+    public function show($id)
     {
         //
     }
@@ -52,10 +51,10 @@ class APIController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\API  $aPI
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(API $aPI)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +63,10 @@ class APIController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\API  $aPI
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, API $aPI)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +74,10 @@ class APIController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\API  $aPI
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(API $aPI)
+    public function destroy($id)
     {
         //
     }

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Favorite;
 use Illuminate\Http\Request;
 
-class FavoriteController extends Controller
+class APIDrawController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +40,10 @@ class FavoriteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Favorite  $favorite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Favorite $favorite)
+    public function show($id)
     {
         //
     }
@@ -52,10 +51,10 @@ class FavoriteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Favorite  $favorite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Favorite $favorite)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +63,10 @@ class FavoriteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Favorite  $favorite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Favorite $favorite)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +74,10 @@ class FavoriteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Favorite  $favorite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Favorite $favorite)
+    public function destroy($id)
     {
         //
     }
