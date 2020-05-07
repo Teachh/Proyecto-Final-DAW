@@ -341,9 +341,11 @@
                 <div class="col-md-1 bg-primary px-4" style=" border-left: 2rem solid #5C746A;"></div>
                 <div class="col-12 col-md-6">
                     <h3>Dibujo</h3>
-                    <img src="{{url($draw->draw)}}" class="w-100" alt="Draw">
+                    <img src="{{url($draw->draw)}}" class="w-100 h-75" alt="Draw">
                 </div>
             </div>
+            <div class="mt-4">{{$draw->description}} </div>
+
             <div class="col-12 row mt-5 ">
                 <div class="col-md-9">
                     <div class="col-md-6">

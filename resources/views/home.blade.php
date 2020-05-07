@@ -25,8 +25,7 @@
                     <div class="sidebar-box pt-md-4">
                        
                         <div class="search-form">
-                            <button id="searchb" style="background: none; color: #333434; height:3rem"><span class="icon "><i class="fas fa-search"></i></span></button>
-                            <input id="searchi" type="text" class="form-control" placeholder="Mariposas, dragones..." name="search">
+                            <input id="searchi" type="text" class="form-control pr-4" placeholder="..." name="search">
                         </div>
                     </div>
                     <!-- !Buscador -->
