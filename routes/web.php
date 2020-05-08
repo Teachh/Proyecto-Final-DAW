@@ -255,6 +255,14 @@ Route::get('/xml/todo', function () {
     return response($content)->header('Content-Type', 'text/xml');
 });
 
+// RUTAS DEL CHAT
+//Route::get('chat', 'ChatsController@index');
+//Route::get('messages', 'ChatsController@fetchMessages');
+//Route::post('messages', 'ChatsController@sendMessage');
+Route::get('/chats', 'ChatController@index');
+Route::get('/messages', 'ChatController@fetchAllMessages');
+Route::post('/messages', 'ChatController@sendMessage');
 // RUTAS DE LOGIN Y REGISTRO
 Auth::routes();
-
+// Rutas de broadcast para que funcione el chat
+Broadcast::routes();

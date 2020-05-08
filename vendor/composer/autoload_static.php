@@ -28,6 +28,7 @@ class ComposerStaticInit5b6e69bd8c40ebcb6ac2afb8aa792031
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -85,6 +86,7 @@ class ComposerStaticInit5b6e69bd8c40ebcb6ac2afb8aa792031
         ),
         'P' => 
         array (
+            'Pusher\\' => 7,
             'Psy\\' => 4,
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
@@ -289,6 +291,10 @@ class ComposerStaticInit5b6e69bd8c40ebcb6ac2afb8aa792031
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
         ),
+        'Pusher\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pusher/pusher-php-server/src',
+        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src',
@@ -465,35 +471,42 @@ class ComposerStaticInit5b6e69bd8c40ebcb6ac2afb8aa792031
     );
 
     public static $classMap = array (
-        'AllSeeder' => __DIR__ . '/../..' . '/database/seeds/AllSeeder.php',
+        'App\\Chat' => __DIR__ . '/../..' . '/app/Chat.php',
         'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Draw' => __DIR__ . '/../..' . '/app/Draw.php',
+        'App\\Events\\MessageSent' => __DIR__ . '/../..' . '/app/Events/MessageSent.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Favorite' => __DIR__ . '/../..' . '/app/Favorite.php',
         'App\\Follow' => __DIR__ . '/../..' . '/app/Follow.php',
+        'App\\Http\\Controllers\\APICommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/APICommentController.php',
+        'App\\Http\\Controllers\\APIDrawController' => __DIR__ . '/../..' . '/app/Http/Controllers/APIDrawController.php',
+        'App\\Http\\Controllers\\APIFollowController' => __DIR__ . '/../..' . '/app/Http/Controllers/APIFollowController.php',
+        'App\\Http\\Controllers\\APIUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/APIUserController.php',
+        'App\\Http\\Controllers\\APIVoteController' => __DIR__ . '/../..' . '/app/Http/Controllers/APIVoteController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\ChatsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChatsController.php',
         'App\\Http\\Controllers\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommentController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DrawController' => __DIR__ . '/../..' . '/app/Http/Controllers/DrawController.php',
-        'App\\Http\\Controllers\\FavoriteController' => __DIR__ . '/../..' . '/app/Http/Controllers/FavoriteController.php',
         'App\\Http\\Controllers\\FollowController' => __DIR__ . '/../..' . '/app/Http/Controllers/FollowController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\VoteController' => __DIR__ . '/../..' . '/app/Http/Controllers/VoteController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
+        'App\\Http\\Middleware\\AuthenticateOnceWithBasicAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthenticateOnceWithBasicAuth.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Message' => __DIR__ . '/../..' . '/app/Message.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -3708,6 +3721,11 @@ class ComposerStaticInit5b6e69bd8c40ebcb6ac2afb8aa792031
         'Psy\\VersionUpdater\\GitHubChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/GitHubChecker.php',
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
+        'Pusher\\Pusher' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/Pusher.php',
+        'Pusher\\PusherCrypto' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/PusherCrypto.php',
+        'Pusher\\PusherException' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/PusherException.php',
+        'Pusher\\PusherInstance' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/PusherInstance.php',
+        'Pusher\\Webhook' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/Webhook.php',
         'Ramsey\\Collection\\AbstractArray' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractArray.php',
         'Ramsey\\Collection\\AbstractCollection' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractCollection.php',
         'Ramsey\\Collection\\AbstractSet' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractSet.php',

@@ -48,6 +48,7 @@
                 <li class="{{ Request::is('perfil/'.auth()->user()->id) ? 'colorlib-active' : '' }}"><a href="{{action('UserController@show', auth()->user()->id)}}">Perfil</a></li>
                 <li class="{{ Request::is('dibujo') ? 'colorlib-active' : '' }}"><a href="{{action('DrawController@index')}}">Crear dibujo</a></li>
                 <li class="{{ Request::is('dibujo/libre') ? 'colorlib-active' : '' }}"><a href="{{action('DrawController@freeDraw')}}">Dibujo libre</a></li>
+                <li class="{{ Request::is('chats') ? 'colorlib-active' : '' }}"><a href="{{url('chats')}}">Chat general</a></li>
                 <li> <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
@@ -79,5 +80,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{{asset('js/home/google-map.js')}}"></script>
 <script src="{{asset('js/home/main.js')}}"></script>
+
 @yield('script')
 @endsection

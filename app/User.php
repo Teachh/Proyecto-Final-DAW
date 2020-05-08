@@ -52,4 +52,13 @@ class User extends Authenticatable
     public function draws() {
         return $this->hasMany('App\Draw');
     }
+    //public function messages()
+    //{
+    //return $this->hasMany(Message::class);
+    //}
+    public function messages(){
+
+        return $this->hasMany(Chat::class);
+        
+    }
 }
