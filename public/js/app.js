@@ -2003,7 +2003,10 @@ __webpack_require__.r(__webpack_exports__);
       });
       axios.post('messages', {
         message: this.newMessage
+      })["catch"](function (error) {
+        console.log(error.response);
       });
+      ;
       this.newMessage = '';
     },
     sendTypingEvent: function sendTypingEvent() {

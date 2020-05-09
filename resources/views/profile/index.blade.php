@@ -177,7 +177,10 @@
                                 <button type="submit" class="btn btn-warning btn-block mb-2">Ver seguidores</button>
                             </form>
                             <form action="{{action('UserController@getFollows', $user->id)}}" style="display:inline">
-                                <button type="submit" class="btn btn-info btn-block">Ver seguidos</button>
+                                <button type="submit" class="btn btn-info btn-block mb-2">Ver seguidos</button>
+                            </form>
+                            <form action="{{action('UserController@getDrawLike', $user->id)}}" style="display:inline">
+                                <button type="submit" class="btn btn-secondary btn-block">Ver dibujos gustados</button>
                             </form>
                         </div>
                         <div class="row user-detail-row w-100">

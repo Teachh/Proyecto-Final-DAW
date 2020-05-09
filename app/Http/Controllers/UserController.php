@@ -151,4 +151,13 @@ class UserController extends Controller
         $usuario = User::findOrFail($id)->first();
         return view('profile.draws', compact('draws', 'usuario'));
     }
+    public function getDrawLike($id){
+        $draws = Draw::join('votes','draws.id', '=', 'votes.draw_id')
+                        ->where('draws.user_id', $id)
+                        ->where('votes.vote', '=', 'pos')
+                        ->get();
+        $usuario = User::findOrFail($id)->first();
+        return view('profile.draws', compact('draws', 'usuario'));
+    }
+    
 }

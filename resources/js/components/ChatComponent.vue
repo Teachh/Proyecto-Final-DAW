@@ -89,7 +89,9 @@
                     user: this.user,
                     message: this.newMessage
                 });
-                axios.post('messages', {message: this.newMessage});
+                axios.post('messages', {message: this.newMessage}).catch(error => {
+               console.log(error.response)
+             });;
                 this.newMessage = '';
             },
             sendTypingEvent() {

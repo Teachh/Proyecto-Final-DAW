@@ -26,9 +26,11 @@ Route::get('/perfil/{id}', 'UserController@show')->name('perfilid')->middleware(
 Route::put('perfil/edit/{id}', 'UserController@update')->middleware('auth');
 Route::get('perfil/{id}/seguidores', 'UserController@getFollowers')->middleware('auth');
 Route::get('perfil/{id}/seguidos', 'UserController@getFollows')->middleware('auth');
+Route::get('perfil/{id}/likes', 'UserController@getDrawLike')->middleware('auth');
 Route::get('perfil/{id}/dibujos', 'UserController@showDraws')->middleware('auth');
 Route::get('perfil/{id}/follow', 'FollowController@create')->middleware('auth');
 Route::get('perfil/{id}/unfollow', 'FollowController@destroy')->middleware('auth');
+
 
 // RUTAS DE DIBUJO
 Route::get('/dibujo/libre', 'DrawController@freeDraw')->name('freedraw')->middleware('auth');
