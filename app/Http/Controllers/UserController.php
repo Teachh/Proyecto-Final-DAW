@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Hash;
 use App\User;
 use App\Follow;
 use App\Draw;
@@ -158,6 +158,20 @@ class UserController extends Controller
                         ->get();
         $usuario = User::findOrFail($id)->first();
         return view('profile.draws', compact('draws', 'usuario'));
+    }
+    public function changepassword(Request $request, $id){
+        $user = User::findOrFail($id)->first();
+        $follow = Follow::where('user_id', $user->id)->count();
+        $following = Follow::where('user_id_request', $user->id)->count();
+        if(!Hash::check($request->oldpassword, $user->password)){
+            $message = 'La contraseña antigua no es válida';
+            return view('profile.index', compact('user', 'follow', 'following','message'));
+        }
+        $pw = Hash::make($request->newpassword);
+        $user->password = $pw;
+        $user->save();
+        $message = 'Se ha cambiado la contraseña correctamente';
+        return view('profile.index', compact('user', 'follow', 'following','message'));
     }
     
 }

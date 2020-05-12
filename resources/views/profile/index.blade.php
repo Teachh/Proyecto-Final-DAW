@@ -262,6 +262,7 @@
                                             </div>
                                         </div>
                                         <div role="tabpanel mt-2" class="tab-pane fade" id="buzz">
+                                            <h1>Cambiar datos</h1>
                                             <form action="{{action('UserController@update', $user)}}" method="POST" style="display:inline" enctype="multipart/form-data">
                                                 {{ method_field('PUT') }}
                                                 {{ csrf_field() }}
@@ -304,10 +305,32 @@
                                                         @endif
                                                     </div>
                                                 </div>
-                                                <button class="btn btn-warning btn-block mt-3">Cambiar Datos</button>
+                                                <button class="btn btn-warning btn-block mt-3 mb-4">Cambiar Datos</button>
                                             </form>
+                                            <h1>Cambiar contraseña</h1>
+                                            <form action="{{action('UserController@changepassword', $user)}}" method="POST" style="display:inline" enctype="multipart/form-data">
+                                                {{ method_field('PUT') }}
+                                                {{ csrf_field() }}
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Contraseña antigua</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="password" name="oldpassword" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Contraseña nueva</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="password" name="newpassword" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-warning btn-block mt-3 mb-4">Cambiar Datos</button>
+                                            </form>
+                                            <p style="color:red">{{$message ?? ''}}</p>
                                         </div>
-
                                     </div>
 
                                 </div>

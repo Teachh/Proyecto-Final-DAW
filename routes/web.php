@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::get('/perfil', 'UserController@index')->name('perfil')->middleware('auth');
 Route::get('/perfil/{id}', 'UserController@show')->name('perfilid')->middleware('auth');
 Route::put('perfil/edit/{id}', 'UserController@update')->middleware('auth');
+Route::put('perfil/changepassword/{id}', 'UserController@changepassword')->middleware('auth');
 Route::get('perfil/{id}/seguidores', 'UserController@getFollowers')->middleware('auth');
 Route::get('perfil/{id}/seguidos', 'UserController@getFollows')->middleware('auth');
 Route::get('perfil/{id}/likes', 'UserController@getDrawLike')->middleware('auth');

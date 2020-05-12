@@ -100,36 +100,29 @@
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Dibuja lo que quieras, no hace falta seguir modas o escoger lo más original, simplemente coge una imagen y adelante!</p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-3 col-sm-6">
+				<div class="col-lg-4 col-sm-4">
 					<div class="premium-item">
 						<img src="img/premium/1.jpg" alt="">
-						<h4>No ad interruptions </h4>
-						<p>Consectetur adipiscing elit</p>
+						<h4>Dibuja lo que quieras </h4>
+						<p>Se libre de hacer lo que quieras</p>
 					</div>
 				</div>
-				<div class="col-lg-3 col-sm-6">
+				<div class="col-lg-4 col-sm-4">
 					<div class="premium-item">
 						<img src="img/premium/2.jpg" alt="">
-						<h4>High Quality</h4>
-						<p>Ectetur adipiscing elit</p>
+						<h4>Alta calidad</h4>
+						<p>CendraDraw permite subir la imagen en cualquier calidad</p>
 					</div>
 				</div>
-				<div class="col-lg-3 col-sm-6">
+				<div class="col-lg-4 col-sm-4">
 					<div class="premium-item">
 						<img src="img/premium/3.jpg" alt="">
-						<h4>Listen Offline</h4>
-						<p>Sed do eiusmod tempor </p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="premium-item">
-						<img src="img/premium/4.jpg" alt="">
-						<h4>Download Music</h4>
-						<p>Adipiscing elit</p>
+						<h4>Mira otros dibujos</h4>
+						<p>Si no te gusta dibujar, también puedes mirar </p>
 					</div>
 				</div>
 			</div>

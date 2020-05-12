@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+//desplegar
+//use Schema;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //desplegar
+        //Schema::defaultStringLength(191);
     }
 
     /**
