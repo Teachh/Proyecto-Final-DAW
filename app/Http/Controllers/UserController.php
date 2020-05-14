@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Hash;
 use App\User;
+use DB;
 use App\Follow;
 use App\Draw;
 use Illuminate\Http\Request;
@@ -152,10 +153,7 @@ class UserController extends Controller
         return view('profile.draws', compact('draws', 'usuario'));
     }
     public function getDrawLike($id){
-        $draws = Draw::join('votes','draws.id', '=', 'votes.draw_id')
-                        ->where('draws.user_id', $id)
-                        ->where('votes.vote', '=', 'pos')
-                        ->get();
+        $draws = DB::select( DB::raw("SELECT draws.*   from votes, draws where  votes.draw_id = draws.id and votes.user_id = ". $id ." and votes.vote = 'pos' group by draws.id") );
         $usuario = User::findOrFail($id)->first();
         return view('profile.draws', compact('draws', 'usuario'));
     }
