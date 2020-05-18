@@ -1,5 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Detectar chrome
+    if(navigator.userAgent.indexOf("Chrome") == -1){
+        $('#al').text('Su navegador puede que no sea compatible al 100%, por favor use Google Chrome en Ordenador')
+
+    }
     // state
     let draw = false;
 
@@ -31,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
             lastDrawPoints.push(points.length);
             //console.log(lastDrawLines);
             //console.log(lastDrawLines[lastDrawLines.length-2]);
-            console.log(lines);
-            console.log(points);
+            //console.log(lines);
+            //console.log(points);
             draw = false;
         });
 

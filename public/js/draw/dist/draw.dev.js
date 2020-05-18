@@ -1,7 +1,12 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', function () {
-  // state
+  // Detectar chrome
+  if (navigator.userAgent.indexOf("Chrome") == -1) {
+    $('#al').text('Su navegador puede que no sea compatible al 100%, por favor use Google Chrome en Ordenador');
+  } // state
+
+
   var draw = false; // elements
 
   points = [];
@@ -26,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
       lastDrawLines.push(lines.length);
       lastDrawPoints.push(points.length); //console.log(lastDrawLines);
       //console.log(lastDrawLines[lastDrawLines.length-2]);
+      //console.log(lines);
+      //console.log(points);
 
-      console.log(lines);
-      console.log(points);
       draw = false;
     }); //export
 
